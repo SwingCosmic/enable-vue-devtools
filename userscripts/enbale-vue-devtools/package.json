@@ -14,7 +14,7 @@
     "build:dev": "cross-env NODE_ENV=development webpack-cli"
   },
   "dependencies": {
-    "@userscripts/polyfills": "workspace:packages/polyfills",
+    "@userscripts/polyfills": "0.1.0",
     "consola": "^2.15.0",
     "regenerator-runtime": "^0.13.7"
   },

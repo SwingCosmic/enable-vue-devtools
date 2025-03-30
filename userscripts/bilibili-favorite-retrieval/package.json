@@ -10,8 +10,8 @@
     "serve": "node scripts/serve.js"
   },
   "dependencies": {
-    "@userscripts/axios-config": "workspace:packages/axios-config",
-    "@userscripts/polyfills": "workspace:packages/polyfills",
+    "@userscripts/axios-config": "0.1.0",
+    "@userscripts/polyfills": "0.1.0",
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "regenerator-runtime": "^0.13.7"
