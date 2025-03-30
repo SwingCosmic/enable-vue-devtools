@@ -1,5 +1,6 @@
 {
   "name": "@userscripts/axios-config",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "dependencies": {
     "axios-gmxhr-adapter": "^0.15.3"
