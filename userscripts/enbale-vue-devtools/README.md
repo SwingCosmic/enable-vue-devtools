@@ -2,6 +2,8 @@
 
 Force enable Vue Devtools for any Vue2 or Vue3 production build.
 
+调整了初始化检查，支持延迟初始化的Vue应用和避免devtool初始化过慢导致检查失败，例如米哈游的活动页面。
+
 ## Installation
 
 | Provider | Home | Link |

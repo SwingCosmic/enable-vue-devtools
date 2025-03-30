@@ -5,12 +5,13 @@ import logger from './logger'
 const _global = (typeof unsafeWindow === 'object' && unsafeWindow) || globalThis;
 
 // devtool hook should be ready when <body> exists
-const _devtoolHook = _global.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+let _devtoolHook = _global.__VUE_DEVTOOLS_GLOBAL_HOOK__;
 
-function main() {
+function checkDevtool() {
+  _devtoolHook = _global.__VUE_DEVTOOLS_GLOBAL_HOOK__;
   if (!_devtoolHook) {
-    logger.warn('No Vue Devtools hook found', _global.location);
-    return
+    // logger.warn('No Vue Devtools hook found', _global.location);
+    return false;
   }
   observeVueRoot(
     function (app, disconnect) {
@@ -20,6 +21,25 @@ function main() {
       emitDevtoolVue3Hooks(app);
     }
   );
+  return true;
+}
+
+function delay(ms = 0) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+async function main(times = 5) {
+  for (let i = 0; i < times; i++) {
+    if (checkDevtool()) {
+      return;
+    }
+    await delay(5000);
+  }
+  if (!_devtoolHook) {
+    logger.warn('No Vue Devtools hook found', _global.location);
+  }
 }
 
 function emitDevtoolVue2Hooks(app) {
